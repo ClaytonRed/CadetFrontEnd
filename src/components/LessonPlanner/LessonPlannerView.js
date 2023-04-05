@@ -3,19 +3,20 @@ import Calendar from "react-calendar";
 import LessonForm from "./LessonForm";
 
 function LessonPlannerView() {
-    const [value, onChange] = useState("");
+    const [date, setDate] = useState(new Date());
+    const [showForm, setShowForm] = useState(false);
+    const handleDateChange = (date) => {
+        setDate(date);
+        setShowForm(true);
+    }
 
     return (
         <div className="p-4 rounded">
-            {JSON.stringify(value)}
             <Calendar
-                onChange={onChange}
-                value={value}
+                onChange={handleDateChange}
+                value={date}
             />
-            {
-                value !== "" &&
-
-                <LessonForm />}
+            {showForm && <LessonForm date={date} />}
         </div>
     )
 }
