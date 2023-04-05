@@ -1,7 +1,7 @@
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { NavLink, useNavigate } from 'react-router-dom';
-// import Logo from './SiteLogo';
+import Logo from './SiteLogo';
 import Cookie from "js-cookie";
 
 function NavigationBar({ isLoggedIn, setIsLoggedIn, isAdmin }) {
@@ -14,8 +14,8 @@ function NavigationBar({ isLoggedIn, setIsLoggedIn, isAdmin }) {
     };
 
     return (
-        <Navbar expand="md" sticky="top" className="nav-container shadow px-2">
-            {/* <Logo /> */}
+        <Navbar expand="md" sticky="top" className="nav-container shadow p-2">
+            <Logo />
             <Navbar.Toggle aria-controls="navbar-nav" />
             <Navbar.Collapse>
                 <Nav>

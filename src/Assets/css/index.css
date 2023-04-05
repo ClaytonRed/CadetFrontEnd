@@ -2,6 +2,7 @@ html {
   height: 100%;
 }
 
+
 body {
   background-color: #ffffff;
   height: 100%;
@@ -19,12 +20,12 @@ code {
 }
 
 .nav-container {
-  background-color: #A0EEC0;
+  background-color: #00402f;
 }
 
 .footer {
   padding-top: 10px;
-  background-color: #A0EEC0;
+  background-color: #00402f;
   height: auto;
   position: fixed;
   bottom: 0;
@@ -32,12 +33,20 @@ code {
 }
 
 .navbar-brand {
-  padding: 0.5rem;
+  padding: 0 !important;
   margin-right: 1rem;
   border-radius: 0.25rem;
+  width: 12rem;
 }
 
 .nav-link {
-  color: black;
+  color: #ffffff;
   font-weight: bold;
+}
+
+
+.brandedBtn {
+  background-color: #004e42;
+  padding: 12px;
+  width: 120px;
 }

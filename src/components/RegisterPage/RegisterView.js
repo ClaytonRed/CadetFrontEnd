@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Form, Button, Container, Alert } from "react-bootstrap";
-import AuthAPICalls from "../../API/Cadets/AuthAPICalls";
+import AuthAPICalls from "../../api/Cadets/AuthAPICalls";
 import { Spinner } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
@@ -40,7 +40,10 @@ function RegisterView({ setIsLoggedIn }) {
             ) : (
                 <></>
             )}
-            <h1>Register</h1>
+                        <h1 className="fw-bold">Register</h1>
+            <p className="mt-3">
+                If you do not have a secret code, contact the big C for one.
+            </p>
             {errorMessages && <Alert variant="danger">{errorMessages}</Alert>}
 
             <Form onSubmit={handleRegister}>
@@ -76,8 +79,8 @@ function RegisterView({ setIsLoggedIn }) {
                         required
                     />
                 </Form.Group> */}
-                <Button variant="primary" type="submit">
-                    Register
+                         <Button type="submit" className="brandedBtn fw-bold mt-3">
+                        REGISTER
                 </Button>
             </Form>
         </Container>
