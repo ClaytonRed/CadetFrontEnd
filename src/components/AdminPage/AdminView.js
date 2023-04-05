@@ -1,6 +1,8 @@
 function AdminView() {
     return (
-        <div>AdminView</div>
+        <>
+            HI THIS IS ADMIN PAGE
+        </>
     )
 }
 export default AdminView

@@ -1,27 +1,22 @@
 import jwt_decode from "jwt-decode";
 import Cookie from "js-cookie";
 
-// TODO: retrieve secret codes from the backend
-// const codeArray = ["cadet", "detachment-commander", "parent", "officer", "cadet-nco"]
-
-// export const verifySecretCode = (code) => {
-//     if (codeArray.includes(code)) {
-//         return true;
-//     }
-
-//     return false;
-// }
-
 export const getToken = () => {
-    const token = Cookie.get("token");
+    const userDetailsString = Cookie.get("UserDetails");
 
-    if (token) {
-        const decodedToken = jwt_decode(token);
+    if (!userDetailsString) {
+        return null;
+    }
+
+    const userDetails = JSON.parse(userDetailsString);
+
+    if (userDetails && userDetails.token) {
+        const decodedToken = jwt_decode(userDetails.token);
         if (decodedToken.exp * 1000 < Date.now()) {
-            Cookie.remove("token");
+            Cookie.remove("UserDetails");
             return null;
         } else {
-            return token;
+            return userDetails.token;
         }
     }
 
@@ -29,17 +24,20 @@ export const getToken = () => {
 };
 
 export const isAdmin = () => {
-    const token = Cookie.get("token");
-    if (!token) return false;
+    const userDetailsString = Cookie.get("UserDetails");
 
-    const decodedToken = jwt_decode(token);
-    if (!decodedToken || Date.now() >= decodedToken.exp * 1000) {
-        Cookie.remove("token");
-        return false;
+    if (!userDetailsString) {
+        return null;
     }
 
-    return decodedToken.isAdmin || false;
-}
+    const userDetails = JSON.parse(userDetailsString);
+
+    if (userDetails && userDetails.user && userDetails.user.role === "Admin") {
+        return true;
+    }
+
+    return false;
+};
 
 export const capitalize = (s) => {
     const capital = s.charAt(0).toUpperCase();

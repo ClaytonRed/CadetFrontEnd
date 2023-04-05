@@ -2,14 +2,15 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Logo from './SiteLogo';
-import Cookie from "js-cookie";
+import Cookie from "js-cookie"
+import { isAdmin } from "../_utils";
 
-function NavigationBar({ isLoggedIn, setIsLoggedIn, isAdmin }) {
+function NavigationBar({ isLoggedIn, setIsLoggedIn }) {
     const navigate = useNavigate();
 
     const handleLogout = () => {
         setIsLoggedIn(false);
-        Cookie.remove("token");
+        Cookie.remove("UserDetails");
         navigate('/login', { replace: true });
     };
 
@@ -33,7 +34,7 @@ function NavigationBar({ isLoggedIn, setIsLoggedIn, isAdmin }) {
                     </NavLink>
                 </Nav>
                 <Nav className="ms-auto">
-                    {isLoggedIn && isAdmin &&
+                    {isLoggedIn && isAdmin() &&
                         <NavLink to="/admin" className="nav-link">
                             Admin
                         </NavLink>

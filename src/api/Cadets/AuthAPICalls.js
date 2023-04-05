@@ -14,8 +14,13 @@ class AuthAPICalls extends AbstractAPIClient {
                 data
             );
 
-            const token = response.data.token;
-            Cookie.set("token", token, { expires: 1 / 24, secure: true, sameSite: "strict" });
+            const userDetails = {
+                token: response.data.token,
+                user: response.data.user
+            };
+            const userDetailsString = JSON.stringify(userDetails);
+
+            Cookie.set("UserDetails", userDetailsString, { expires: 1 / 24, secure: true, sameSite: "strict" });
             return response.data;
         } catch (error) {
             throw error;
