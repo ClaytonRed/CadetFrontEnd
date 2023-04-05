@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Form, Button, Container, Alert, Spinner } from "react-bootstrap";
-import AuthAPICalls from "../../API/Cadets/AuthAPICalls";
+import AuthAPICalls from "../../api/Cadets/AuthAPICalls";
 import { useNavigate } from "react-router-dom";
 
 function LoginView({ setIsLoggedIn }) {
@@ -40,7 +40,10 @@ function LoginView({ setIsLoggedIn }) {
             ) : (
                 <></>
             )}
-            <h1>Login</h1>
+            <h1 className="fw-bold">Login</h1>
+            <p className="mt-3">
+                If you do not have a username assigned to you, please contact Captain Bizzle.
+            </p>
             {errorMessages && <Alert variant="danger">{errorMessages}</Alert>}
             <Form onSubmit={handleLogin}>
                 <Form.Group className="mb-3" controlId="username">
@@ -61,8 +64,8 @@ function LoginView({ setIsLoggedIn }) {
                         required
                     />
                 </Form.Group>
-                <Button variant="primary" type="submit">
-                    Login
+                <Button type="submit" className="brandedBtn fw-bold mt-3">
+                        LOGIN
                 </Button>
             </Form>
         </Container>

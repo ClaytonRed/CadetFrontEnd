@@ -1,16 +1,12 @@
-// import { CadetLogo } from '../../Assets/img/logo-with-bg.png';
+import CadetLogo from '../../Assets/img/logo-with-bg.png';
+import { Navbar } from "react-bootstrap"
 
-// function Logo() {
-//     return (
-//         <OurLogo
-//             alt="Logo"
-//             src="/HPCCL_larger.svg"
-//             href='#'
-//             width="150"
-//             height="40"
-//             className="d-inline-block align-top"
-//         />
-//     )
-// }
+function Logo() {
+    return (
+        <Navbar.Brand>
+            <img src={CadetLogo} alt="cadet logo" className='navbar-brand'/>
+        </Navbar.Brand>
+    )
+}
 
-// export default Logo;
+export default Logo;
