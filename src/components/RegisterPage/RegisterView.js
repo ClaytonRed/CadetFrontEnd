@@ -21,7 +21,7 @@ function RegisterView({ setIsLoggedIn }) {
             await authAPI.loginOrRegister(registerData, "register");
 
             setIsLoggedIn(true);
-            navigate('/', { replace: true });
+            navigate("/", { replace: true });
         } catch (error) {
             setErrorMessage(error.response.data.errors);
         } finally {
@@ -40,7 +40,7 @@ function RegisterView({ setIsLoggedIn }) {
             ) : (
                 <></>
             )}
-                        <h1 className="fw-bold">Register</h1>
+            <h1 className="fw-bold">Register</h1>
             <p className="mt-3">
                 If you do not have a secret code, contact the big C for one.
             </p>
@@ -79,8 +79,8 @@ function RegisterView({ setIsLoggedIn }) {
                         required
                     />
                 </Form.Group> */}
-                         <Button type="submit" className="brandedBtn fw-bold mt-3">
-                        REGISTER
+                <Button type="submit" className="brandedBtn fw-bold mt-3">
+                    REGISTER
                 </Button>
             </Form>
         </Container>

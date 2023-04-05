@@ -25,7 +25,6 @@ function App() {
         setIsLoggedIn={setIsLoggedIn}
         isAdmin={isAdmin()}
       />
-      {/* <SiteFooter /> */}
     </BrowserRouter>
   );
 }

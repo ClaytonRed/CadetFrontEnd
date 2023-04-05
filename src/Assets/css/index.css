@@ -14,7 +14,26 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
+.login-container {
+  background-color: #ffffff;
+  height: 60vh;
+  width: 60vh;
+  padding: 80px;
+  align-items: center;
+  text-align: center;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.register-container {
+  background-color: #ffffff;
+  height: 60vh;
+  width: 60vh;
+  padding: 80px;
+  text-align: center;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
@@ -26,10 +45,19 @@ code {
 .footer {
   padding-top: 10px;
   background-color: #00402f;
+  color: white;
   height: auto;
   position: fixed;
   bottom: 0;
-  width: 100%;
+  width: 100%;;
+}
+
+.footer img {
+  width: 100px;
+  height: 50px;
+  background-color: white;
+  border-radius: 5px;
+  margin: 4px;
 }
 
 .navbar-brand {
