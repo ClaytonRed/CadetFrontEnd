@@ -6,7 +6,7 @@ import AdminView from "./AdminPage/AdminView";
 import LoginView from "./LoginPage/LoginView";
 import RegisterView from "./RegisterPage/RegisterView";
 import { getToken } from './_utils';
-import Footer from "../components/Footer/Footer"
+import Footer from "../Components/Footer/Footer"
 
 
 function AppRoutes({ isLoggedIn, setIsLoggedIn, isAdmin }) {
@@ -17,8 +17,8 @@ function AppRoutes({ isLoggedIn, setIsLoggedIn, isAdmin }) {
     return (
         <>
         <Routes>
-        <Route path="/" element={isLoggedIn ? <HomepageView /> : <Navigate to="/login" />} />
-            <Route path="/lesson-planner" element={<LessonPlannerView />} />
+            <Route path="/" element={isLoggedIn ? <HomepageView /> : <Navigate to="/login" />} />
+            <Route path="/lesson-planner" element={isLoggedIn ? <LessonPlannerView /> : <Navigate to="/login" />} />
             <Route path="/calendar" element={isLoggedIn ? <CalenderView /> : <Navigate to="/login" />} />
             <Route path="/admin" element={isLoggedIn && isAdmin ? <AdminView /> : <Navigate to="/login" />} />
             <Route path="/login" element={<LoginView setIsLoggedIn={setIsLoggedIn} />} />

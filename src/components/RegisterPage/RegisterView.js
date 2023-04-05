@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Form, Button, Container, Alert } from "react-bootstrap";
-import AuthAPICalls from "../../api/Cadets/AuthAPICalls";
-import { Spinner } from "react-bootstrap";
+import AuthAPICalls from "../../API/Cadets/AuthAPICalls";
+import { Spinner } from "react-bootstrap";  
 import { useNavigate } from "react-router-dom";
 
 function RegisterView({ setIsLoggedIn }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [secretCode, setSecretCode] = useState("");
     const [errorMessages, setErrorMessage] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
@@ -17,13 +18,13 @@ function RegisterView({ setIsLoggedIn }) {
         event.preventDefault();
         try {
             setIsLoading(true);
-            const registerData = { username, password };
+            const registerData = { username, password, secretCode };
             await authAPI.loginOrRegister(registerData, "register");
 
             setIsLoggedIn(true);
             navigate("/", { replace: true });
         } catch (error) {
-            setErrorMessage(error.response.data.errors);
+            setErrorMessage(error.response.data.message);
         } finally {
             setIsLoading(false);
         }
@@ -65,10 +66,9 @@ function RegisterView({ setIsLoggedIn }) {
                         required
                     />
                 </Form.Group>
-                {/* TODO: SECRET CODE */}
-                {/* <Form.Group className='mb-3' controlId="code">
+                <Form.Group className='mb-3' controlId="code">
                     <Form.Label>
-                        Secret code
+                        Secret code:
                     </Form.Label>
                     <Form.Control
                         type="password"
@@ -78,7 +78,7 @@ function RegisterView({ setIsLoggedIn }) {
                         }}
                         required
                     />
-                </Form.Group> */}
+                </Form.Group>
                 <Button type="submit" className="brandedBtn fw-bold mt-3">
                     REGISTER
                 </Button>

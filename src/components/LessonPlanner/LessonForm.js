@@ -1,6 +1,6 @@
-import SubjectAPICalls from "../../api/Cadets/SubjectAPICalls";
-import LessonAPICalls from "../../api/Cadets/LessonAPICalls";
-import LevelAPICalls from "../../api/Cadets/LevelAPICalls";
+import SubjectAPICalls from "../../API/Cadets/SubjectAPICalls";
+import LessonAPICalls from "../../API/Cadets/LessonAPICalls";
+import LevelAPICalls from "../../API/Cadets/LevelAPICalls";
 import { getToken } from "../_utils";
 import React, { useState, useEffect } from "react";
 import { Container, Alert, Form, Spinner, Button } from "react-bootstrap";

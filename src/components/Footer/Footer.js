@@ -9,8 +9,8 @@ function Footer() {
           <p>Copyright @ los-programadores-sin-techo-que-son-parlanchínes</p>
         </Col>
         <img src={
-            Image
-        }/>
+          Image
+        } alt='the developer academy' />
       </Row>
     </footer>
   );
