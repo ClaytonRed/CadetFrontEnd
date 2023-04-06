@@ -65,6 +65,7 @@ function HomepageView() {
                                             <Table striped bordered hover>
                                                 <thead>
                                                     <tr>
+                                                        <th className="table-header">Organiser</th>
                                                         <th className="table-header">Date</th>
                                                         <th className="table-header">Level</th>
                                                         <th className="table-header">Subject</th>
@@ -76,7 +77,8 @@ function HomepageView() {
                                                 <tbody>
                                                     {upcomingPlans.map((plan) => (
                                                         <tr key={plan._id}>
-                                                            <td className="table-data">{plan.planDate}</td>
+                                                            <td className="table-data">{plan.organiser}</td>
+                                                            <td className="table-data">{new Date(plan.planDate).toLocaleDateString()}</td>
                                                             <td className="table-data">{plan.starLevel.level_name}</td>
                                                             <td className="table-data">{plan.subject.subject_name}</td>
                                                             <td className="table-data">{plan.lesson.lesson_name}</td>
@@ -96,6 +98,7 @@ function HomepageView() {
                                             <Table striped bordered hover>
                                                 <thead>
                                                     <tr>
+                                                        <th className="table-header">Organiser</th>
                                                         <th className="table-header">Date</th>
                                                         <th className="table-header">Level</th>
                                                         <th className="table-header">Subject</th>
@@ -107,7 +110,8 @@ function HomepageView() {
                                                 <tbody>
                                                     {pastPlans.map((plan) => (
                                                         <tr key={plan._id}>
-                                                            <td className="table-data">{plan.planDate}</td>
+                                                            <td className="table-data">{plan.organiser}</td>
+                                                            <td className="table-data">{new Date(plan.planDate).toLocaleDateString()}</td>
                                                             <td className="table-data">{plan.starLevel.level_name}</td>
                                                             <td className="table-data">{plan.subject.subject_name}</td>
                                                             <td className="table-data">{plan.lesson.lesson_name}</td>
