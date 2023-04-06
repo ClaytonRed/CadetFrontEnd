@@ -44,9 +44,6 @@ function RegisterView({ setIsLoggedIn }) {
                 <></>
             )}
             <h1 className="fw-bold">Register</h1>
-            <p className="mt-3">
-                If you do not have a secret code, contact the big C for one.
-            </p>
             {errorMessages && <Alert variant="danger">{errorMessages}</Alert>}
 
             <Form onSubmit={handleRegister}>
