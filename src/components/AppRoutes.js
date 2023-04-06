@@ -5,7 +5,7 @@ import AdminView from "./AdminPage/AdminView";
 import LoginView from "./LoginPage/LoginView";
 import RegisterView from "./RegisterPage/RegisterView";
 import { getToken, isAdmin, isDetachmentCommander } from './_utils';
-import Footer from "../Components/Footer/Footer"
+import Footer from "../components/Footer/Footer"
 
 function AppRoutes({ isLoggedIn, setIsLoggedIn}) {
     if (getToken()) {

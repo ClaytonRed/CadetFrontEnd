@@ -1,8 +1,8 @@
-import SubjectAPICalls from "../../API/Cadets/SubjectAPICalls";
-import LessonAPICalls from "../../API/Cadets/LessonAPICalls";
-import LevelAPICalls from "../../API/Cadets/LevelAPICalls";
-import UserAPICalls from "../../API/Cadets/UserAPICalls";
-import PlannerAPICalls from "../../API/Cadets/PlannerAPICalls";
+import SubjectAPICalls from "../../api/Cadets/SubjectAPICalls";
+import LessonAPICalls from "../../api/Cadets/LessonAPICalls";
+import LevelAPICalls from "../../api/Cadets/LevelAPICalls";
+import UserAPICalls from "../../api/Cadets/UserAPICalls";
+import PlannerAPICalls from "../../api/Cadets/PlannerAPICalls";
 import { getToken, getName, getUserId } from "../_utils";
 import { useState, useEffect } from "react";
 import { Alert, Form, Spinner, Button } from "react-bootstrap";

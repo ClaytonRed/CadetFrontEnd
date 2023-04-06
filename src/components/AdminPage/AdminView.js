@@ -1,6 +1,6 @@
 import { Accordion, Button, Container, Form, Row, Col } from "react-bootstrap";
-import LevelAPICalls from "../../API/Cadets/LevelAPICalls";
-import SecretCodeAPICalls from "../../API/Cadets/SecretCodeAPICalls";
+import LevelAPICalls from "../../api/Cadets/LevelAPICalls";
+import SecretCodeAPICalls from "../../api/Cadets/SecretCodeAPICalls";
 import { useEffect, useState } from "react";
 import { getToken } from "../_utils";
 

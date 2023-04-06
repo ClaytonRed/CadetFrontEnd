@@ -1,8 +1,8 @@
 import { BrowserRouter } from 'react-router-dom';
-import NavigationBar from './Components/Header/NavigationBar'
-import AppRoutes from './Components/AppRoutes';
+import NavigationBar from './components/Header/NavigationBar'
+import AppRoutes from './components/AppRoutes';
 import { useEffect, useState } from 'react';
-import { getToken } from './Components/_utils';
+import { getToken } from './components/_utils';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

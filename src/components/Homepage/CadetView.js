@@ -1,7 +1,7 @@
 import { Table, Row } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
 import { getToken, getUserId } from "../_utils";
-import PlannerAPICalls from "../../API/Cadets/PlannerAPICalls";
+import PlannerAPICalls from "../../api/Cadets/PlannerAPICalls";
 
 function CadetView() {
     const [upcomingPlans, setUpcomingPlans] = useState([]);

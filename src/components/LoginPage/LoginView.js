@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Form, Button, Container, Alert, Spinner } from "react-bootstrap";
-import AuthAPICalls from "../../API/Cadets/AuthAPICalls";
+import AuthAPICalls from "../../api/Cadets/AuthAPICalls";
 import { useNavigate } from "react-router-dom";
 
 function LoginView({ setIsLoggedIn }) {
