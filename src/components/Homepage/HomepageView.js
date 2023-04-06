@@ -1,4 +1,4 @@
-import { Container, Alert, Spinner } from "react-bootstrap";
+import { Container, Alert, Spinner, Button } from "react-bootstrap";
 import { isCadet, isDetachmentCommander } from "../_utils";
 import React, { useState } from "react";
 import WelcomeSection from "./WelcomeSection";
@@ -8,6 +8,10 @@ import DetachmentCommanderView from "./DetachmentCommanderView";
 function HomepageView() {
     const [isLoading, setIsLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
+
+    const handlePrint = () => {
+        window.print();
+    };
 
     return (
         <Container className="homepage-container">
@@ -29,6 +33,9 @@ function HomepageView() {
                             <DetachmentCommanderView />
                         )}
                     </Container>
+                    <Button variant="primary" className="mt-3" onClick={handlePrint}>
+                        Print
+                    </Button>
                 </div>
             )}
         </Container>
