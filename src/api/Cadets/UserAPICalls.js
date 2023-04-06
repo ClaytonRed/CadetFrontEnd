@@ -3,7 +3,7 @@ import AbstractAPIClient from "../AbstractAPIClient";
 class UserAPICalls extends AbstractAPIClient {
     constructor() {
         super();
-        this.baseURL = "http://localhost:3001/users/";
+        this.baseURL = "https://cadet-project-backend.onrender.com/users/";
     }
 
     async getAllCadets(token) {

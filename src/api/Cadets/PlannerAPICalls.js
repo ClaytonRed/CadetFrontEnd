@@ -3,7 +3,7 @@ import AbstractAPIClient from "../AbstractAPIClient";
 class PlannerAPICalls extends AbstractAPIClient {
     constructor() {
         super();
-        this.baseURL = "http://localhost:3001/planner/";
+        this.baseURL = "https://cadet-project-backend.onrender.com/planner/";
     }
 
     async createNewPlan(token, planData) {

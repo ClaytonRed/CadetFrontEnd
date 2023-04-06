@@ -4,7 +4,7 @@ import Cookie from "js-cookie";
 class AuthAPICalls extends AbstractAPIClient {
     constructor() {
         super();
-        this.baseURL = "http://localhost:3001/auth/";
+        this.baseURL = "https://cadet-project-backend.onrender.com/auth/";
     }
 
     async loginOrRegister(data, operation) {

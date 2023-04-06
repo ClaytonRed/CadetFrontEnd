@@ -3,7 +3,7 @@ import AbstractAPIClient from "../AbstractAPIClient";
 class SecretCodeAPICalls extends AbstractAPIClient {
     constructor() {
         super();
-        this.baseURL = "http://localhost:3001/secret-codes/";
+        this.baseURL = "https://cadet-project-backend.onrender.com/secret-codes/";
     }
 
     async getAllCodes(token, queryParams = {}) {

@@ -3,7 +3,7 @@ import AbstractAPIClient from "../AbstractAPIClient";
 class SubjectAPICalls extends AbstractAPIClient {
     constructor() {
         super();
-        this.baseURL = "http://localhost:3001/subjects/";
+        this.baseURL = "https://cadet-project-backend.onrender.com/subjects/";
     }
 
     async getSubjectsForStarLevel(token, levelId) {

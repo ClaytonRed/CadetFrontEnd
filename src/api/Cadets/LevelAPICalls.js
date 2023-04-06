@@ -3,7 +3,7 @@ import AbstractAPIClient from "../AbstractAPIClient";
 class LevelAPICalls extends AbstractAPIClient {
     constructor() {
         super();
-        this.baseURL = "http://localhost:3001/levels/";
+        this.baseURL = "https://cadet-project-backend.onrender.com/levels/";
     }
 
     async getAllLevels(token, queryParams = {}) {
