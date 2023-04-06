@@ -131,3 +131,7 @@ body {
   width: 150px;
   word-wrap: break-word;
 }
+
+.star-levels-admin {
+  margin: 20px;
+}
