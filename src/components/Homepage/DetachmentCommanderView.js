@@ -53,7 +53,7 @@ function DetachmentCommanderView() {
                                         {plan.cadets.map((cadet) => (
                                             <span key={cadet._id}>
                                                 {cadet.firstName} {cadet.surname}
-                                                {plan.cadets.indexOf(cadet) !== plan.cadets.length - 1 && " "}
+                                                {plan.cadets.indexOf(cadet) !== plan.cadets.length - 1 && ", "}
                                             </span>
                                         ))}
                                     </td>
@@ -93,7 +93,7 @@ function DetachmentCommanderView() {
                                         {plan.cadets.map((cadet) => (
                                             <span key={cadet._id}>
                                                 {cadet.firstName} {cadet.surname}
-                                                {plan.cadets.indexOf(cadet) !== plan.cadets.length - 1 && " "}
+                                                {plan.cadets.indexOf(cadet) !== plan.cadets.length - 1 && ", "}
                                             </span>
                                         ))}
                                     </td>
