@@ -30,7 +30,7 @@ function LoginView({ setIsLoggedIn }) {
     };
 
     return (
-        <Container className="mt-5 login-container">
+        <Container className="mt-5 mb-5 login-container">
             {isLoading ? (
                 <div className="text-center">
                     <Spinner animation="border" role="status">

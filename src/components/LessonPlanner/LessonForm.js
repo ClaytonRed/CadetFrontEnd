@@ -1,17 +1,20 @@
 import SubjectAPICalls from "../../API/Cadets/SubjectAPICalls";
 import LessonAPICalls from "../../API/Cadets/LessonAPICalls";
 import LevelAPICalls from "../../API/Cadets/LevelAPICalls";
+import UserAPICalls from "../../API/Cadets/UserAPICalls";
+import PlannerAPICalls from "../../API/Cadets/PlannerAPICalls";
 import { getToken } from "../_utils";
-import React, { useState, useEffect } from "react";
-import { Container, Alert, Form, Spinner, Button } from "react-bootstrap";
+import { useState, useEffect } from "react";
+import { Alert, Form, Spinner, Button } from "react-bootstrap";
 
-function LessonForm({ date }) {
+function LessonForm({ date, onSubmit }) {
     const [isLoading, setIsLoading] = useState(true);
     const [errorMessage, setErrorMessage] = useState("");
     const [levels, setLevels] = useState([]);
     const [subjects, setSubjects] = useState([]);
     const [lessons, setLessons] = useState([]);
     const [cadets, setCadets] = useState([]);
+    const [selectedCadets, setSelectedCadets] = useState([]);
     const [site, setSite] = useState("");
     const [notes, setNotes] = useState("");
 
@@ -39,6 +42,18 @@ function LessonForm({ date }) {
         }
     };
 
+    const fetchCadets = () => {
+        try {
+            const userApi = new UserAPICalls();
+            const cadets = userApi.getAllCadets(getToken());
+            setIsLoading(false);
+            return cadets;
+        } catch (error) {
+            setErrorMessage(error.response.data.message);
+            setIsLoading(false);
+        }
+    };
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -50,13 +65,14 @@ function LessonForm({ date }) {
                 setSubjects(subjectData);
                 const lessonData = await fetchLessons(subjectData[0]._id);
                 setLessons(lessonData);
+                const cadetData = await fetchCadets();
+                setCadets(cadetData);
             } catch (error) {
                 setErrorMessage(error.response.data.message);
             }
         };
         fetchData();
     }, []);
-
 
     const handleLevelChange = async (e) => {
         setIsLoading(true);
@@ -74,28 +90,66 @@ function LessonForm({ date }) {
         setLessons(lessonData);
     };
 
-    const handleSubmit = (e) => {
+    const handleSelectedCadets = (e) => {
+        const controlId = "cadets"; // Add the ID of the Form.Control element
+        if (e.target.id !== controlId) {
+            return;
+        }
+
+        const select = document.getElementById("cadets");
+        const options = select.options;
+
+        const newSelectedCadets = Array.from(options)
+            .filter((option) => option.selected)
+            .map((option) => option.value);
+
+        // Add the "selected" class to the selected options
+        Array.prototype.forEach.call(options, (option) => {
+            if (newSelectedCadets.includes(option.value)) {
+                option.classList.add("selected");
+            }
+        });
+
+        setSelectedCadets((prevSelectedCadets) => {
+            // Merge previously selected cadets with newly selected cadets
+            const mergedCadets = [...prevSelectedCadets, ...newSelectedCadets];
+            // Remove duplicates from the merged array
+            const uniqueCadets = [...new Set(mergedCadets)];
+            return uniqueCadets;
+        });
+    };
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // const lessonData = {
-        //     date,
-        //     level,
-        //     subject,
-        //     lesson,
-        //     cadets,
-        //     site,
-        //     notes
-        // };
-        // TODO: Add lessonData to the database
-        // setLevels([]);
-        // setSubject("");
-        // setLesson("");
-        // setCadets([]);
-        // setSite("");
-        // setNotes("");
+        setErrorMessage("");
+
+        const formData = e.target.elements;
+        const selectedIds = selectedCadets.join(",");
+        const plannerData = {
+            planDate: date,
+            starLevel: formData.level.value,
+            subject: formData.subject.value,
+            lesson: formData.lesson.value,
+            cadets: selectedIds,
+            site: formData.site.value,
+            notes: formData.notes.value
+        };
+
+        try {
+            setIsLoading(true);
+            const plannerApi = new PlannerAPICalls();
+            await plannerApi.createNewPlan(getToken(), plannerData);
+            setIsLoading(false);
+            onSubmit("Form submitted successfully!");
+        } catch (error) {
+            setErrorMessage(error.response.data.message);
+            setIsLoading(false);
+        }
     };
 
     return (
-        <Container className="mt-3">
+        <>
+            <br />
             {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
             {isLoading ? (
                 <div className="text-center">
@@ -131,11 +185,12 @@ function LessonForm({ date }) {
                     </Form.Group>
                     <Form.Group controlId="cadets">
                         <Form.Label>Cadets to add:</Form.Label>
-                        <Form.Control as="select" multiple value={cadets} onChange={(e) => setCadets(Array.from(e.target.selectedOptions, (option) => option.value))}>
-                            {/* TODO: Add options based on database */}
-                            <option value="cadet1">Cadet 1</option>
-                            <option value="cadet2">Cadet 2</option>
-                            <option value="cadet3">Cadet 3</option>
+                        <Form.Control as="select" multiple value={selectedCadets.map((cadet) => cadet._id)} onChange={handleSelectedCadets}>
+                            {cadets.map((cadet) => (
+                                <option key={cadet._id} value={cadet._id}>
+                                    {cadet.firstName + " " + cadet.surname}
+                                </option>
+                            ))}
                         </Form.Control>
                     </Form.Group>
                     <Form.Group controlId="site">
@@ -146,12 +201,12 @@ function LessonForm({ date }) {
                         <Form.Label>Notes:</Form.Label>
                         <Form.Control as="textarea" rows={3} value={notes} onChange={(e) => setNotes(e.target.value)} />
                     </Form.Group>
-                    <Button variant="primary" type="submit">
+                    <Button className="mt-3" variant="primary" type="submit">
                         Submit
                     </Button>
                 </Form>
             )}
-        </Container>
+        </>
     );
 }
 

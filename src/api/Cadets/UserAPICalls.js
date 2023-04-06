@@ -1,14 +1,14 @@
 import AbstractAPIClient from "../AbstractAPIClient";
 
-class LessonAPICalls extends AbstractAPIClient {
+class UserAPICalls extends AbstractAPIClient {
     constructor() {
         super();
-        this.baseURL = "http://localhost:3001/lessons/";
+        this.baseURL = "http://localhost:3001/users/";
     }
 
-    async getLessonsForSubject(token, subjectId) {
+    async getAllCadets(token) {
         try {
-            const url = `${this.baseURL}${subjectId}`;
+            const url = `${this.baseURL}cadets`;
             const config = {
                 headers: { Authorization: `Bearer ${token}` },
             };
@@ -22,4 +22,4 @@ class LessonAPICalls extends AbstractAPIClient {
     }
 }
 
-export default LessonAPICalls;
+export default UserAPICalls;

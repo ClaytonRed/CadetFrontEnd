@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 function RegisterView({ setIsLoggedIn }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [surname, setSurname] = useState("");
     const [secretCode, setSecretCode] = useState("");
     const [errorMessages, setErrorMessage] = useState("");
     const [isLoading, setIsLoading] = useState(false);
@@ -18,7 +20,7 @@ function RegisterView({ setIsLoggedIn }) {
         event.preventDefault();
         try {
             setIsLoading(true);
-            const registerData = { username, password, secretCode };
+            const registerData = { username, password, firstName, surname, secretCode };
             await authAPI.loginOrRegister(registerData, "register");
 
             setIsLoggedIn(true);
@@ -31,7 +33,7 @@ function RegisterView({ setIsLoggedIn }) {
     };
 
     return (
-        <Container className="mt-5 register-container">
+        <Container className="mt-5 mb-5 register-container">
             {isLoading ? (
                 <div className="text-center">
                     <Spinner animation="border" role="status">
@@ -49,7 +51,7 @@ function RegisterView({ setIsLoggedIn }) {
 
             <Form onSubmit={handleRegister}>
                 <Form.Group className="mb-3" controlId="username">
-                    <Form.Label>Choose your username:</Form.Label>
+                    <Form.Label>Username:</Form.Label>
                     <Form.Control
                         type="text"
                         value={username}
@@ -58,11 +60,29 @@ function RegisterView({ setIsLoggedIn }) {
                     />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="password">
-                    <Form.Label>Choose your password:</Form.Label>
+                    <Form.Label>Password:</Form.Label>
                     <Form.Control
                         type="password"
                         value={password}
                         onChange={(event) => setPassword(event.target.value)}
+                        required
+                    />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="firstName">
+                    <Form.Label>First name:</Form.Label>
+                    <Form.Control
+                        type="text"
+                        value={firstName}
+                        onChange={(event) => setFirstName(event.target.value)}
+                        required
+                    />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="firstName">
+                    <Form.Label>Surname:</Form.Label>
+                    <Form.Control
+                        type="text"
+                        value={surname}
+                        onChange={(event) => setSurname(event.target.value)}
                         required
                     />
                 </Form.Group>

@@ -39,6 +39,74 @@ export const isAdmin = () => {
     return false;
 };
 
+export const isDetachmentCommander = () => {
+    const userDetailsString = Cookie.get("UserDetails");
+
+    if (!userDetailsString) {
+        return null;
+    }
+
+    const userDetails = JSON.parse(userDetailsString);
+
+    if (userDetails && userDetails.user && userDetails.user.role === "Detachment Commander") {
+        return true;
+    }
+
+    return false;
+};
+
+export const isCadet = () => {
+    const userDetailsString = Cookie.get("UserDetails");
+
+    if (!userDetailsString) {
+        return null;
+    }
+
+    const userDetails = JSON.parse(userDetailsString);
+
+    if (userDetails && userDetails.user && userDetails.user.role === "Cadet") {
+        return true;
+    }
+
+    return false;
+};
+
+export const getName = () => {
+    const userDetailsString = Cookie.get("UserDetails");
+
+    if (!userDetailsString) {
+        return null;
+    }
+
+    const userDetails = JSON.parse(userDetailsString);
+
+    return userDetails.user.name;
+};
+
+export const getUserRole = () => {
+    const userDetailsString = Cookie.get("UserDetails");
+
+    if (!userDetailsString) {
+        return null;
+    }
+
+    const userDetails = JSON.parse(userDetailsString);
+
+    return userDetails.user.role;
+};
+
+export const getUserId = () => {
+    const userDetailsString = Cookie.get("UserDetails");
+
+    if (!userDetailsString) {
+        return null;
+    }
+
+    const userDetails = JSON.parse(userDetailsString);
+
+    return userDetails.user.user_id;
+};
+
 export const capitalize = (s) => {
     const capital = s.charAt(0).toUpperCase();
     const rest = s.slice(1);

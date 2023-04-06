@@ -3,7 +3,7 @@ import Nav from 'react-bootstrap/Nav';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Logo from './SiteLogo';
 import Cookie from "js-cookie"
-import { isAdmin } from "../_utils";
+import { isAdmin, isDetachmentCommander } from "../_utils";
 
 function NavigationBar({ isLoggedIn, setIsLoggedIn }) {
     const navigate = useNavigate();
@@ -19,20 +19,18 @@ function NavigationBar({ isLoggedIn, setIsLoggedIn }) {
             <Logo />
             <Navbar.Toggle aria-controls="navbar-nav" />
             <Navbar.Collapse>
-                <Nav>
-                    <NavLink to="/" className="nav-link" exact="true">
-                        Home
-                    </NavLink>
-                    <NavLink to="/lesson-planner" className="nav-link">
-                        Lesson Planner
-                    </NavLink>
-                    <NavLink to="/calendar" className="nav-link">
-                        Calendar
-                    </NavLink>
-                    <NavLink to="/training" className="nav-link">
-                        Training
-                    </NavLink>
-                </Nav>
+                {isLoggedIn &&
+                    <Nav>
+                        <NavLink to="/" className="nav-link" exact="true">
+                            Home
+                        </NavLink>
+                        {isLoggedIn && isDetachmentCommander() &&
+                            <NavLink to="/lesson-planner" className="nav-link">
+                                Lesson Planner
+                            </NavLink>
+                        }
+                    </Nav>
+                }
                 <Nav className="ms-auto">
                     {isLoggedIn && isAdmin() &&
                         <NavLink to="/admin" className="nav-link">

@@ -2,7 +2,6 @@ html {
   height: 100%;
 }
 
-
 body {
   background-color: #ffffff;
   height: 100%;
@@ -16,7 +15,6 @@ body {
 
 .login-container {
   background-color: #ffffff;
-  height: 60vh;
   width: 60vh;
   padding: 80px;
   align-items: center;
@@ -26,7 +24,6 @@ body {
 
 .register-container {
   background-color: #ffffff;
-  height: 60vh;
   width: 60vh;
   padding: 80px;
   text-align: center;
@@ -47,10 +44,8 @@ body {
   background-color: #00402f;
   color: white;
   height: auto;
-  position: fixed;
   bottom: 0;
   width: 100%;
-  ;
 }
 
 .footer img {
@@ -85,4 +80,54 @@ body {
   background-color: #004e42;
   padding: 12px;
   width: 120px;
+}
+
+.selected {
+  background-color: rgb(10, 156, 241);
+  color: white;
+}
+
+.welcome-container {
+  display: flex;
+  align-items: center;
+}
+
+.logged-in-as {
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.role {
+  color: blue;
+  margin-left: 5px;
+  font-weight: normal;
+}
+
+.welcome-row {
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+}
+
+.planner-container {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+}
+
+.homepage-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: rgb(230, 230, 230);
+  border: 3px solid #166406;
+  border-radius: 10px;
+}
+
+.table-header {
+  width: 150px;
+}
+
+.table-data {
+  width: 150px;
+  word-wrap: break-word;
 }

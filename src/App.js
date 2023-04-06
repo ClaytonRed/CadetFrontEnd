@@ -2,7 +2,7 @@ import { BrowserRouter } from 'react-router-dom';
 import NavigationBar from './Components/Header/NavigationBar'
 import AppRoutes from './Components/AppRoutes';
 import { useEffect, useState } from 'react';
-import { getToken, isAdmin } from './Components/_utils';
+import { getToken } from './Components/_utils';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -18,12 +18,10 @@ function App() {
       <NavigationBar
         isLoggedIn={isLoggedIn}
         setIsLoggedIn={setIsLoggedIn}
-        isAdmin={isAdmin()}
       />
       <AppRoutes
         isLoggedIn={isLoggedIn}
         setIsLoggedIn={setIsLoggedIn}
-        isAdmin={isAdmin()}
       />
     </BrowserRouter>
   );
