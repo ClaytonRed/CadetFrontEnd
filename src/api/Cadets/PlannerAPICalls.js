@@ -33,6 +33,21 @@ class PlannerAPICalls extends AbstractAPIClient {
             throw error;
         }
     }
+
+    async getOrganiserPlans(token, organiserId) {
+        try {
+            const url = `${this.baseURL}/organiser/${organiserId}`;
+            const config = {
+                headers: { Authorization: `Bearer ${token}` },
+            };
+            const response = await this.getRequest(url, config);
+            return response.data;
+        } catch (error) {
+            // Handle the error here
+            console.error(error);
+            throw error;
+        }
+    }
 }
 
 export default PlannerAPICalls;
